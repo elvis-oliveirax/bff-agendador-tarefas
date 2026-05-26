@@ -22,13 +22,13 @@ import java.util.List;
 @RequestMapping("/tarefas")
 @RequiredArgsConstructor
 @Tag(name = "Tarefas", description = "Cadastra tarefas de usuários")
-@SecurityRequirement(name = SecurityConfig.SECURITY_SHEME)
+@SecurityRequirement(name = SecurityConfig.SECURITY_SCHEME)
 public class TarefasController {
 
 	private final TarefasService tarefasService;
 
 	@PostMapping
-	@Operation(summary = "Salvar Tarefas de Usuário",
+	@Operation(summary = "Salva Tarefas de Usuário",
 			description = "Cria um nova tarefas")
 	@ApiResponse(responseCode = "200", description = "Tarefa salva com sucesso")
 	@ApiResponse(responseCode = "500", description = "Erro de servidor")
