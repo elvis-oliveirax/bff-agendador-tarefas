@@ -2,7 +2,6 @@ package com.javaeo.bffagendadortarefas.controller;
 
 
 import com.javaeo.bffagendadortarefas.infrastructure.exeptions.ConflictException;
-import com.javaeo.bffagendadortarefas.infrastructure.exeptions.IllegalArgumentException;
 import com.javaeo.bffagendadortarefas.infrastructure.exeptions.RescoucerNotFoundException;
 import com.javaeo.bffagendadortarefas.infrastructure.exeptions.UnauthorizedException;
 import org.springframework.http.HttpStatus;
@@ -13,25 +12,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-	@ExceptionHandler(RescoucerNotFoundException.class)
-	public ResponseEntity<String> handleResourceNotFoundException(RescoucerNotFoundException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-	}
+    @ExceptionHandler(RescoucerNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFoundException(RescoucerNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<String> handleConflictException(ConflictException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+    }
 
-	@ExceptionHandler(ConflictException.class)
-	public ResponseEntity<String> handleConflictException(ConflictException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
-	}
-
-	@ExceptionHandler(UnauthorizedException.class)
-	public ResponseEntity<String> handleUnauthorizedException(UnauthorizedException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
-	}
-
-	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-	}
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<String> handleUnauthorizedException(UnauthorizedException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
 }
 
 
