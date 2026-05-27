@@ -2,11 +2,12 @@ package com.javaeo.bffagendadortarefas.infrastructure.client.config;
 
 import com.javaeo.bffagendadortarefas.infrastructure.exeptions.BusinessException;
 import com.javaeo.bffagendadortarefas.infrastructure.exeptions.ConflictException;
+import com.javaeo.bffagendadortarefas.infrastructure.exeptions.IllegalArgumentException;
 import com.javaeo.bffagendadortarefas.infrastructure.exeptions.RescoucerNotFoundException;
 import com.javaeo.bffagendadortarefas.infrastructure.exeptions.UnauthorizedException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
-import org.apache.coyote.BadRequestException;
+
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -27,7 +28,7 @@ public class FeignError implements ErrorDecoder {
             case 401:
                 return new UnauthorizedException("Erro: " + mensagemErro);
             case 400:
-                return new BadRequestException("Erro: " + mensagemErro);
+                return new IllegalArgumentException("Erro: " + mensagemErro);
             default:
                 return new BusinessException("Erro: " + mensagemErro);
         }
