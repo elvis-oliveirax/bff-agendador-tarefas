@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class FeignConfig {
+public class FeingConfig {
 
     @Bean
-    public FeignError feingError(){
-        return new FeignError();
+    public FeingError feingError(){
+        return new FeingError();
     }
 }

@@ -8,7 +8,6 @@ import com.javaeo.bffagendadortarefas.bunisess.dto.in.UsuarioDTORequest;
 import com.javaeo.bffagendadortarefas.bunisess.dto.out.EnderecoDTOResponse;
 import com.javaeo.bffagendadortarefas.bunisess.dto.out.TelefoneDTOResponse;
 import com.javaeo.bffagendadortarefas.bunisess.dto.out.UsuarioDTOResponse;
-import com.javaeo.bffagendadortarefas.bunisess.dto.out.ViaCepDTOResponse;
 import com.javaeo.bffagendadortarefas.infrastructure.client.UsuarioClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -60,10 +59,5 @@ public class UsuarioService {
 	public TelefoneDTOResponse cadastraTelefone(String token, TelefoneDTORequest dto) {
 
 		return  client.cadastraTelefone(dto, token);
-	}
-
-	public ViaCepDTOResponse buscarEnderecoPorCep(String cep){
-		return client.buscarDadosCep(cep);
-
 	}
 }
